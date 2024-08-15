@@ -751,9 +751,9 @@ GameObject:
   - component: {fileID: 1180089893}
   - component: {fileID: 1180089897}
   - component: {fileID: 1180089898}
-  - component: {fileID: 1180089896}
   - component: {fileID: 1180089895}
   - component: {fileID: 1180089899}
+  - component: {fileID: 1180089900}
   m_Layer: 0
   m_Name: ESTRELLANUEVA
   m_TagString: Estrella
@@ -908,20 +908,6 @@ PolygonCollider2D:
       - {x: 0.24499999, y: -1.68}
       - {x: 0.39499998, y: -1.39}
   m_UseDelaunayMesh: 0
---- !u!114 &1180089896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180089892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529a58fae08da73459f8587168129b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {fileID: 2011141598}
-  radius: 2
 --- !u!114 &1180089897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +966,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1180089900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180089892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529a58fae08da73459f8587168129b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 2011141598}
+  radius: 0.5
 --- !u!1 &1468125530
 GameObject:
   m_ObjectHideFlags: 0
