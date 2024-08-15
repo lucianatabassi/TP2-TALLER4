@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DESINTERES.unity
     guid: e7e7e1b5633c3ac4d92dcc8eb79a36e3
+  - enabled: 1
+    path: Assets/Scenes/SOBERBIA.unity
+    guid: c79f7ddb513a795418db28df3b889204
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5b2b3136eed34f4438e3032d87d410b5, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 582440730e0dcc04b8674fbc4fdc6d97, type: 2}

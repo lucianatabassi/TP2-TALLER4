@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EstrellaProximidad : MonoBehaviour
@@ -6,15 +8,11 @@ public class EstrellaProximidad : MonoBehaviour
     public float umbralProximidad = 2.0f; // Distancia para activar la animación
 
     private GameObject[] rombos; // Array para almacenar todos los rombos
-    private bool[] animacionActiva; // Estado de la animación para cada rombo
 
     void Start()
     {
         // Encontrar todos los rombos con la etiqueta especificada
         rombos = GameObject.FindGameObjectsWithTag(romboTag);
-
-        // Inicializar el array de estado de animación
-        animacionActiva = new bool[rombos.Length];
     }
 
     void Update()
@@ -28,19 +26,13 @@ public class EstrellaProximidad : MonoBehaviour
             if (distancia < umbralProximidad)
             {
                 estrellaCerca = true;
+                Debug.Log("Rombo dentro del umbral: " + rombos[i].name);
                 break;
             }
         }
 
         // Si el estado de proximidad ha cambiado, actualiza las animaciones
-        if (estrellaCerca)
-        {
-            ActivarAnimaciones(true);
-        }
-        else
-        {
-            ActivarAnimaciones(false);
-        }
+        ActivarAnimaciones(estrellaCerca);
     }
 
     // Método para activar o desactivar las animaciones "Agrandar"
@@ -53,6 +45,7 @@ public class EstrellaProximidad : MonoBehaviour
             {
                 controlador.ActivarAnimacionAgrandar(activar);
             }
+
         }
     }
 }
