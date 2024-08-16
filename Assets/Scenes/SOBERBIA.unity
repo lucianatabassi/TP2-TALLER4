@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 2011141598}
-  radius: 0.5
+  radius: 2
 --- !u!1 &1468125530
 GameObject:
   m_ObjectHideFlags: 0
