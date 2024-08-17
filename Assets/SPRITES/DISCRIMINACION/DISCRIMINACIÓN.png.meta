@@ -1,0 +1,323 @@
+fileFormatVersion: 2
+guid: 1161ff0623ae1344bb97b4a6e0a128e2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "DISCRIMINACI\xD3N_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 120
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99002f7c1389d54f9542024c246317b
+      internalID: -750407158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "DISCRIMINACI\xD3N_3"
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 39
+        width: 136
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d040789c7745add438d929a783db0822
+      internalID: -1905396167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "DISCRIMINACI\xD3N_5"
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 23
+        width: 147
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b047415753eaffd4dafe6069f3825925
+      internalID: -778791316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "DISCRIMINACI\xD3N_8"
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 3
+        width: 169
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ebf94f030c82e40acb691cbee2ea7e
+      internalID: 160412386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "DISCRIMINACI\xD3N_11"
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 175
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da31cb1cc9c23ad45a7ab171540c429a
+      internalID: -927843295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      "DISCRIMINACI\xD3N_0": -750407158
+      "DISCRIMINACI\xD3N_1": 2078819184
+      "DISCRIMINACI\xD3N_10": 610163783
+      "DISCRIMINACI\xD3N_11": -927843295
+      "DISCRIMINACI\xD3N_12": 1022675325
+      "DISCRIMINACI\xD3N_13": -569062492
+      "DISCRIMINACI\xD3N_14": 1389380061
+      "DISCRIMINACI\xD3N_15": 490952738
+      "DISCRIMINACI\xD3N_16": -681524401
+      "DISCRIMINACI\xD3N_17": 45986938
+      "DISCRIMINACI\xD3N_18": 324910326
+      "DISCRIMINACI\xD3N_19": 1771311107
+      "DISCRIMINACI\xD3N_2": -311375547
+      "DISCRIMINACI\xD3N_20": 1482577829
+      "DISCRIMINACI\xD3N_21": -74554691
+      "DISCRIMINACI\xD3N_22": 1552367221
+      "DISCRIMINACI\xD3N_23": 1058875539
+      "DISCRIMINACI\xD3N_24": 1688630934
+      "DISCRIMINACI\xD3N_25": -1152854303
+      "DISCRIMINACI\xD3N_26": 2016249786
+      "DISCRIMINACI\xD3N_27": 1537133961
+      "DISCRIMINACI\xD3N_28": 587402192
+      "DISCRIMINACI\xD3N_29": 1768785886
+      "DISCRIMINACI\xD3N_3": -1905396167
+      "DISCRIMINACI\xD3N_30": 1386638715
+      "DISCRIMINACI\xD3N_31": -628817112
+      "DISCRIMINACI\xD3N_32": -372025993
+      "DISCRIMINACI\xD3N_33": 1202972593
+      "DISCRIMINACI\xD3N_34": 706508246
+      "DISCRIMINACI\xD3N_35": -175707048
+      "DISCRIMINACI\xD3N_36": -1880321866
+      "DISCRIMINACI\xD3N_37": -2016913891
+      "DISCRIMINACI\xD3N_38": 1365537112
+      "DISCRIMINACI\xD3N_39": -1903276401
+      "DISCRIMINACI\xD3N_4": -2064514442
+      "DISCRIMINACI\xD3N_40": 1305423395
+      "DISCRIMINACI\xD3N_41": 969694682
+      "DISCRIMINACI\xD3N_42": -1495504952
+      "DISCRIMINACI\xD3N_43": 580184712
+      "DISCRIMINACI\xD3N_44": 99516561
+      "DISCRIMINACI\xD3N_45": -1603935619
+      "DISCRIMINACI\xD3N_46": 1848876095
+      "DISCRIMINACI\xD3N_47": -1476995859
+      "DISCRIMINACI\xD3N_48": 970514104
+      "DISCRIMINACI\xD3N_49": 1536904568
+      "DISCRIMINACI\xD3N_5": -778791316
+      "DISCRIMINACI\xD3N_50": -1874104297
+      "DISCRIMINACI\xD3N_51": 734314694
+      "DISCRIMINACI\xD3N_6": -1804753979
+      "DISCRIMINACI\xD3N_7": 787768296
+      "DISCRIMINACI\xD3N_8": 160412386
+      "DISCRIMINACI\xD3N_9": 1136044925
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
