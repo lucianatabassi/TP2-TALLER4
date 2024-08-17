@@ -38,4 +38,15 @@ public class RhombusAnimationController : MonoBehaviour
     {
         animator.SetTrigger(TransformTrigger); // Usa el nombre del trigger específico
     }
+
+    // Método para reiniciar el estado del script
+    public void ResetAnimation()
+    {
+        // Reiniciar el estado de la animación
+        animator.ResetTrigger(TransformTrigger);
+        animator.Play("Idle");  // Vuelve a la animación "Idle"
+        hasTransformed = false; // Restablecer el estado de transformación
+        CancelInvoke();  // Cancelar cualquier invocación pendiente
+        Invoke("StartDeformAnimation", 2f); // Reiniciar la animación "Deformar" después de un tiempo
+    }
 }

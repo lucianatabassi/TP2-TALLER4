@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EstrellaProximidad : MonoBehaviour
 {
-    public string romboTag = "Rombo"; // Etiqueta asignada a los rombos
-    public float umbralProximidad = 2.0f; // Distancia para activar la animación
+    public string romboTag = "Rombo";  // Etiqueta para identificar los rombos
+    public float umbralProximidad = 2.0f;  // Distancia para activar las animaciones
+    public GameObject[] agrandarAnimaciones; // Asigna los GameObjects de animación "Agrandar"
+    public GameObject[] idleAnimaciones;
 
-    private GameObject[] rombos; // Array para almacenar todos los rombos
+    private GameObject[] rombos;  // Array para almacenar los rombos
 
     void Start()
     {
         // Encontrar todos los rombos con la etiqueta especificada
         rombos = GameObject.FindGameObjectsWithTag(romboTag);
+
+        // Inicializar las animaciones "Agrandar" como desactivadas
+        InicializarAnimaciones();
     }
 
     void Update()
@@ -31,21 +36,49 @@ public class EstrellaProximidad : MonoBehaviour
             }
         }
 
-        // Si el estado de proximidad ha cambiado, actualiza las animaciones
+        // Actualiza las animaciones solo cuando la estrella esté cerca
         ActivarAnimaciones(estrellaCerca);
+    }
+
+    // Método para inicializar las animaciones "Agrandar"
+    void InicializarAnimaciones()
+    {
+        foreach (GameObject animacion in agrandarAnimaciones)
+        {
+            if (animacion != null)
+            {
+                animacion.SetActive(false); // Desactivar animaciones "Agrandar" al inicio
+            }
+        }
+
+        // Desactivar todas las animaciones "Idle"
+        foreach (GameObject animacion in idleAnimaciones)
+        {
+            if (animacion != null)
+            {
+                animacion.SetActive(true); // Suponiendo que las animaciones "Idle" deben estar activas al inicio
+            }
+        }
     }
 
     // Método para activar o desactivar las animaciones "Agrandar"
     void ActivarAnimaciones(bool activar)
     {
-        for (int i = 0; i < rombos.Length; i++)
+        foreach (GameObject animacion in agrandarAnimaciones)
         {
-            ControladorRombo controlador = rombos[i].GetComponent<ControladorRombo>();
-            if (controlador != null)
+            if (animacion != null)
             {
-                controlador.ActivarAnimacionAgrandar(activar);
+                animacion.SetActive(activar);
             }
+        }
 
+        // Desactivar las animaciones "Idle" si la estrella está cerca
+        foreach (GameObject animacion in idleAnimaciones)
+        {
+            if (animacion != null)
+            {
+                animacion.SetActive(!activar);
+            }
         }
     }
 }

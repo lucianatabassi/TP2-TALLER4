@@ -39,4 +39,14 @@ public class StarProximityScaling : MonoBehaviour
             }
         }
     }
+
+    // Método para reiniciar las interacciones
+    public void ResetInteractions()
+    {
+        // Reiniciar el estado de los rombos
+        for (int i = 0; i < hasTriggered.Length; i++)
+        {
+            hasTriggered[i] = false; // Permitir que los rombos vuelvan a activar la escala
+        }
+    }
 }

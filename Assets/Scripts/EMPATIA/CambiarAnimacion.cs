@@ -11,12 +11,22 @@ public class CambiarAnimacion : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        IniciarSecuencia();
+    }
 
+    public void IniciarSecuencia()
+    {
         // Iniciar con la animación inicial
         animator.Play(nombreAnimacionInicial);
 
         // Iniciar la corutina para cambiar a la siguiente animación después de cierto tiempo
         StartCoroutine(CambiarAnimacionDespuesDeTiempo());
+    }
+
+    public void ReiniciarSecuencia()
+    {
+        StopAllCoroutines();  // Detener cualquier corutina anterior
+        IniciarSecuencia();   // Reiniciar la secuencia
     }
 
     IEnumerator CambiarAnimacionDespuesDeTiempo()
