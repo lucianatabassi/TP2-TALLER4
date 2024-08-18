@@ -7,9 +7,20 @@ public class RhombusAnimationController : MonoBehaviour
     public string TransformTrigger; // Nombre del trigger "Transformar" específico para cada rombo
     private bool hasTransformed = false;
 
+    public AudioClip sonidoInteraccion; // AudioClip para el sonido de interacción
+    private AudioSource audioSource; // Referencia al AudioSource
+
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        // Agrega o encuentra el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         // Inicia la animación Idle si es necesario
         // animator.Play("Idle");
         Invoke("StartDeformAnimation", 2f); // Ajusta el tiempo según sea necesario
@@ -31,6 +42,12 @@ public class RhombusAnimationController : MonoBehaviour
             Debug.Log("Star detected. Activating transform animation.");
             hasTransformed = true;
             ActivateTransformTrigger();
+
+            // Reproducir sonido de interacción
+            if (sonidoInteraccion != null)
+            {
+                audioSource.PlayOneShot(sonidoInteraccion);
+            }
         }
     }
 

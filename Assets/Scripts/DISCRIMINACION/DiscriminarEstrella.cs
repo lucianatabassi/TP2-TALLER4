@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiscriminarEstrella : MonoBehaviour
@@ -11,6 +10,9 @@ public class DiscriminarEstrella : MonoBehaviour
     public float moveDistance = 0.5f; // Distancia que se alejará el rombo cuando la estrella se acerque
     public float moveSpeed = 5.0f; // Velocidad a la que el rombo se mueve (puedes ajustar esta velocidad)
     public float delayBeforeReturning = 1.0f; // Tiempo de espera antes de volver a la posición original
+
+    public AudioSource audioSource; // Referencia al componente AudioSource
+    public AudioClip sonidoInteraccion; // Referencia al AudioClip para reproducir
 
     private Transform estrellaTransform; // Referencia al transform de la estrella
     private Vector3 originalPosition; // Posición original del rombo
@@ -46,6 +48,15 @@ public class DiscriminarEstrella : MonoBehaviour
                     animator.Play(animationName);
                 }
 
+                // Reproduce el sonido de interacción si está cerca
+                if (audioSource != null && sonidoInteraccion != null)
+                {
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.PlayOneShot(sonidoInteraccion);
+                    }
+                }
+
                 // Calcula la dirección y establece la posición objetivo
                 Vector3 direction = (transform.position - estrellaTransform.position).normalized;
                 targetPosition = originalPosition + direction * moveDistance;
@@ -65,7 +76,7 @@ public class DiscriminarEstrella : MonoBehaviour
                     animator.Play(idleAnimationName);
                 }
 
-                // Establecer la posición objetivo para volver a la posición original después de un segundo
+                // Establecer la posición objetivo para volver a la posición original
                 if (!isReturningToOriginalPosition)
                 {
                     StartCoroutine(ReturnToOriginalPositionAfterDelay());

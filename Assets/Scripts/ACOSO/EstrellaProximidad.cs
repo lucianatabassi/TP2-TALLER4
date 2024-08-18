@@ -9,7 +9,11 @@ public class EstrellaProximidad : MonoBehaviour
     public GameObject[] agrandarAnimaciones; // Asigna los GameObjects de animación "Agrandar"
     public GameObject[] idleAnimaciones;
 
+    public AudioSource audioSource; // Referencia al componente AudioSource
+    public AudioClip sonidoInteraccion; // Referencia al AudioClip para reproducir
+
     private GameObject[] rombos;  // Array para almacenar los rombos
+    private bool sonidoReproducido = false; // Variable para controlar la reproducción del sonido
 
     void Start()
     {
@@ -38,6 +42,17 @@ public class EstrellaProximidad : MonoBehaviour
 
         // Actualiza las animaciones solo cuando la estrella esté cerca
         ActivarAnimaciones(estrellaCerca);
+
+        // Reproduce el sonido solo si la estrella está cerca y no se ha reproducido aún
+        if (estrellaCerca && !sonidoReproducido)
+        {
+            ReproducirSonido();
+            sonidoReproducido = true; // Marca que el sonido ha sido reproducido
+        }
+        else if (!estrellaCerca)
+        {
+            sonidoReproducido = false; // Resetea la variable si la estrella se aleja
+        }
     }
 
     // Método para inicializar las animaciones "Agrandar"
@@ -79,6 +94,15 @@ public class EstrellaProximidad : MonoBehaviour
             {
                 animacion.SetActive(!activar);
             }
+        }
+    }
+
+    // Método para reproducir el sonido
+    void ReproducirSonido()
+    {
+        if (audioSource != null && sonidoInteraccion != null)
+        {
+            audioSource.PlayOneShot(sonidoInteraccion);
         }
     }
 }

@@ -11,6 +11,19 @@ public class PELEAROMBOS : MonoBehaviour
 
     public float distanciaActivacion = 2.0f; // Distancia a partir de la cual cambia la animación
 
+    public AudioClip sonidoInteraccion; // AudioClip para el sonido de interacción
+    private AudioSource audioSource; // Referencia al AudioSource
+
+    void Start()
+    {
+        // Agrega o encuentra el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
+
     void Update()
     {
         // Ejemplo básico de detección de proximidad con distancia cuadrada
@@ -44,6 +57,12 @@ public class PELEAROMBOS : MonoBehaviour
         {
             animator.SetBool("IsFighting", false); // Cambia "IsFighting" según sea necesario
             animator.SetBool("IsCalm", true); // Activa el estado tranquilo
+        }
+
+        // Reproducir sonido de interacción si no se está reproduciendo ya
+        if (!audioSource.isPlaying && sonidoInteraccion != null)
+        {
+            audioSource.PlayOneShot(sonidoInteraccion);
         }
     }
 
