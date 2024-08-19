@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 242151654}
   - component: {fileID: 242151653}
   - component: {fileID: 242151652}
+  - component: {fileID: 242151659}
+  - component: {fileID: 242151658}
   - component: {fileID: 242151657}
   m_Layer: 0
   m_Name: Rombo 1
@@ -295,6 +297,39 @@ PolygonCollider2D:
       - {x: 0.37, y: -0.24}
       - {x: 0.53999996, y: 0.06}
   m_UseDelaunayMesh: 0
+--- !u!114 &242151658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242151651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353e1ecf37022644face2cf51a6481f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  velocidadRotacion: 2
+  ajusteRotacionInicial: 270
+--- !u!114 &242151659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242151651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d790ff159f3c46a0ad7b818eb96f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  distanciaReferencia: 2.28
+  escalaBase: {x: 1.24, y: 1.24, z: 1.24}
+  factorEscalado: 5
+  sonidoInteraccion: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
+  volumen: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +433,8 @@ GameObject:
   - component: {fileID: 557560156}
   - component: {fileID: 557560155}
   - component: {fileID: 557560154}
+  - component: {fileID: 557560159}
+  - component: {fileID: 557560158}
   - component: {fileID: 557560157}
   m_Layer: 0
   m_Name: Rombo 2
@@ -559,6 +596,39 @@ PolygonCollider2D:
       - {x: 0.37, y: -0.24}
       - {x: 0.53999996, y: 0.06}
   m_UseDelaunayMesh: 0
+--- !u!114 &557560158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557560153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353e1ecf37022644face2cf51a6481f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  velocidadRotacion: 2
+  ajusteRotacionInicial: 270
+--- !u!114 &557560159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557560153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d790ff159f3c46a0ad7b818eb96f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  distanciaReferencia: 2.28
+  escalaBase: {x: 1.24, y: 1.24, z: 1.24}
+  factorEscalado: 5
+  sonidoInteraccion: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
+  volumen: 0.2
 --- !u!1 &871730196
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1107035068
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -913,7 +983,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1227274024}
   - component: {fileID: 1227274023}
-  - component: {fileID: 1227274028}
   - component: {fileID: 1227274026}
   - component: {fileID: 1227274025}
   - component: {fileID: 1227274027}
@@ -1099,32 +1168,6 @@ PolygonCollider2D:
       - {x: 0.24499999, y: -1.68}
       - {x: 0.39499998, y: -1.39}
   m_UseDelaunayMesh: 0
---- !u!114 &1227274028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227274022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcab47fd09fb82b4fb65e37d8c6d2258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  romboTag: Rombo
-  umbralProximidad: 2.2
-  agrandarAnimaciones:
-  - {fileID: 2002984151}
-  - {fileID: 1107035067}
-  - {fileID: 2039424266}
-  - {fileID: 1982817208}
-  idleAnimaciones:
-  - {fileID: 242151651}
-  - {fileID: 557560153}
-  - {fileID: 1424693747}
-  - {fileID: 1432300489}
-  audioSource: {fileID: 1227274029}
-  sonidoInteraccion: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
 --- !u!82 &1227274029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1132,12 +1175,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227274022}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.68
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1406,6 +1449,8 @@ GameObject:
   - component: {fileID: 1424693752}
   - component: {fileID: 1424693751}
   - component: {fileID: 1424693750}
+  - component: {fileID: 1424693754}
+  - component: {fileID: 1424693753}
   - component: {fileID: 1424693749}
   m_Layer: 0
   m_Name: Rombo 3
@@ -1567,6 +1612,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1424693753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424693747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353e1ecf37022644face2cf51a6481f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 519420028}
+  velocidadRotacion: 2
+  ajusteRotacionInicial: 270
+--- !u!114 &1424693754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424693747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d790ff159f3c46a0ad7b818eb96f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  distanciaReferencia: 2.28
+  escalaBase: {x: 1.24, y: 1.24, z: 1.24}
+  factorEscalado: 5
+  sonidoInteraccion: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
+  volumen: 0.2
 --- !u!1 &1432300489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1656,8 @@ GameObject:
   - component: {fileID: 1432300493}
   - component: {fileID: 1432300491}
   - component: {fileID: 1432300490}
+  - component: {fileID: 1432300495}
+  - component: {fileID: 1432300494}
   m_Layer: 0
   m_Name: Rombo 4
   m_TagString: Rombo
@@ -1673,6 +1753,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -139.2}
+--- !u!114 &1432300494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432300489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353e1ecf37022644face2cf51a6481f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  velocidadRotacion: 2
+  ajusteRotacionInicial: 270
+--- !u!114 &1432300495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432300489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950d790ff159f3c46a0ad7b818eb96f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estrella: {fileID: 1227274022}
+  distanciaReferencia: 2.28
+  escalaBase: {x: 1.24, y: 1.24, z: 1.24}
+  factorEscalado: 5
+  sonidoInteraccion: {fileID: 8300000, guid: 00fbeca2602baa1409a63578e9ba70a5, type: 3}
+  volumen: 0.2
 --- !u!1 &1835657774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +2053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1982817209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2217,7 +2330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2002984152
 Transform:
   m_ObjectHideFlags: 0
@@ -2469,7 +2582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2039424267
 SpriteRenderer:
   m_ObjectHideFlags: 0

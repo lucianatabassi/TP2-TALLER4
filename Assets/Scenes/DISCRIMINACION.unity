@@ -158,8 +158,8 @@ MonoBehaviour:
   animator: {fileID: 75017294}
   animationName: discrimina3
   idleAnimationName: discri3idle
-  proximityThreshold: 2
-  moveDistance: 0.9
+  proximityThreshold: 2.5
+  moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
   audioSource: {fileID: 75017296}
@@ -264,7 +264,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.68
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -383,8 +383,8 @@ MonoBehaviour:
   animator: {fileID: 378649984}
   animationName: discrimina1
   idleAnimationName: discri1idle
-  proximityThreshold: 2
-  moveDistance: 0.9
+  proximityThreshold: 2.5
+  moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
   audioSource: {fileID: 75017296}
@@ -489,7 +489,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.68
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -608,8 +608,8 @@ MonoBehaviour:
   animator: {fileID: 463974931}
   animationName: discrimina4
   idleAnimationName: discri4idle
-  proximityThreshold: 2
-  moveDistance: 0.9
+  proximityThreshold: 2.5
+  moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
   audioSource: {fileID: 75017296}
@@ -714,7 +714,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.68
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -833,8 +833,8 @@ MonoBehaviour:
   animator: {fileID: 496529919}
   animationName: discrimina2
   idleAnimationName: discri2idle
-  proximityThreshold: 2
-  moveDistance: 0.9
+  proximityThreshold: 2.5
+  moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
   audioSource: {fileID: 75017296}
@@ -939,7 +939,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.68
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

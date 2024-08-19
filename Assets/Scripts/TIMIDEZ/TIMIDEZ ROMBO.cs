@@ -13,6 +13,7 @@ public class TIMIDEZROMBO : MonoBehaviour
 
     private Vector3 escalaOriginal;
     private bool enProximidad = false;
+    private bool sonidoReproducido = false;  // Controla si el sonido ya se ha reproducido
     private AudioSource audioSource;  // Componente AudioSource
 
     void Start()
@@ -46,10 +47,12 @@ public class TIMIDEZROMBO : MonoBehaviour
             if (distancia <= distanciaCercana)
             {
                 enProximidad = true;
+
                 // Reproduce el sonido si está en proximidad y no ha sonado antes
-                if (!audioSource.isPlaying)
+                if (!sonidoReproducido)
                 {
                     audioSource.Play();
+                    sonidoReproducido = true;  // Marca que el sonido ha sido reproducido
                 }
                 break;  // Si un rombo está lo suficientemente cerca, no necesitamos seguir buscando
             }
@@ -64,6 +67,7 @@ public class TIMIDEZROMBO : MonoBehaviour
         {
             // Si no está en proximidad, volvemos al tamaño original
             transform.localScale = Vector3.Lerp(transform.localScale, escalaOriginal, Time.deltaTime * velocidadAchicamiento);
+            sonidoReproducido = false;  // Reseteamos la variable para que el sonido pueda reproducirse nuevamente cuando se acerque a un rombo
         }
     }
 
