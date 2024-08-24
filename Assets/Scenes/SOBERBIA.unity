@@ -1099,6 +1099,7 @@ MonoBehaviour:
   - {fileID: 1063560206}
   estrella: {fileID: 1180089894}
   scaleIncrement: 0.2
+  scaleDuration: 0.6
   sonidoInteraccion: {fileID: 8300000, guid: c597ff5038c5cf24d8f0f4f6e0759ba6, type: 3}
 --- !u!50 &1180089899
 Rigidbody2D:

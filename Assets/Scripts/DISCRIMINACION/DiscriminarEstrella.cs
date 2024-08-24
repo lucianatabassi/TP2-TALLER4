@@ -18,6 +18,7 @@ public class DiscriminarEstrella : MonoBehaviour
     private Vector3 originalPosition; // Posición original del rombo
     private Vector3 targetPosition; // Posición objetivo a la que se moverá el rombo
     private bool isReturningToOriginalPosition = false;
+    private bool soundPlayed = false; // Para verificar si el sonido ya se ha reproducido
 
     void Start()
     {
@@ -48,13 +49,11 @@ public class DiscriminarEstrella : MonoBehaviour
                     animator.Play(animationName);
                 }
 
-                // Reproduce el sonido de interacción si está cerca
-                if (audioSource != null && sonidoInteraccion != null)
+                // Reproduce el sonido de interacción inmediatamente sin delay
+                if (!soundPlayed && audioSource != null && sonidoInteraccion != null)
                 {
-                    if (!audioSource.isPlaying)
-                    {
-                        audioSource.PlayOneShot(sonidoInteraccion);
-                    }
+                    audioSource.PlayOneShot(sonidoInteraccion);
+                    soundPlayed = true; // Asegura que el sonido no se repita hasta que sea necesario
                 }
 
                 // Calcula la dirección y establece la posición objetivo
@@ -98,6 +97,7 @@ public class DiscriminarEstrella : MonoBehaviour
         if (distance >= proximityThreshold)
         {
             targetPosition = originalPosition;
+            soundPlayed = false; // Resetear el estado de reproducción del sonido
         }
 
         isReturningToOriginalPosition = false;
@@ -114,8 +114,9 @@ public class DiscriminarEstrella : MonoBehaviour
             animator.Play(idleAnimationName);
         }
 
-        // Resetear el estado de proximidad
+        // Resetear el estado de proximidad y sonido
         StopAllCoroutines();
         isReturningToOriginalPosition = false;
+        soundPlayed = false;
     }
 }

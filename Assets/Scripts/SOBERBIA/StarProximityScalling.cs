@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections;  // Añade esta línea para utilizar IEnumerator y corrutinas
 
 public class StarProximityScaling : MonoBehaviour
 {
     public Animator[] romboAnimators; // Asigna los animadores de los rombos en el inspector
     public Transform estrella; // Asigna el transform de la estrella en el inspector
     public float scaleIncrement = 0.5f; // Cantidad por la cual la estrella aumentará su escala
+    public float scaleDuration = 1f; // Duración en segundos para completar el incremento de escala
     public AudioClip sonidoInteraccion; // AudioClip para el sonido de interacción
 
     private bool[] hasTriggered; // Para asegurarse de que cada rombo solo active la escala una vez
@@ -38,8 +40,8 @@ public class StarProximityScaling : MonoBehaviour
                     romboAnimator.SetTrigger("Achicar"); // Asegúrate de que "Achicar" es el trigger en el animador del rombo
                 }
 
-                // Aumenta la escala de la estrella
-                estrella.localScale += new Vector3(scaleIncrement, scaleIncrement, 0);
+                // Iniciar la corutina para aumentar gradualmente la escala de la estrella
+                StartCoroutine(IncrementarEscalaGradualmente());
 
                 // Reproducir sonido de interacción si está definido
                 if (sonidoInteraccion != null)
@@ -51,6 +53,25 @@ public class StarProximityScaling : MonoBehaviour
                 hasTriggered[index] = true;
             }
         }
+    }
+
+    // Corrutina para incrementar la escala de la estrella gradualmente
+    IEnumerator IncrementarEscalaGradualmente()
+    {
+        Vector3 initialScale = estrella.localScale;
+        Vector3 targetScale = initialScale + new Vector3(scaleIncrement, scaleIncrement, 0);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < scaleDuration)
+        {
+            estrella.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / scaleDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Espera hasta el siguiente frame
+        }
+
+        // Asegura que la escala final sea exactamente la de destino
+        estrella.localScale = targetScale;
     }
 
     // Método para reiniciar las interacciones

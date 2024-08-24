@@ -9,9 +9,27 @@ public class CambiarAnimacion : MonoBehaviour
     public float tiempoEspera = 3f; // Tiempo en segundos antes de cambiar la animación
     public float duracionBucle = 1f; // Duración en segundos que la animación estará en bucle
 
+    private AnimatorOverrideController overrideController;
+    private AnimationClip clipToModify;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        // Crear un AnimatorOverrideController basado en el controlador de animación original
+        overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        animator.runtimeAnimatorController = overrideController;
+
+        // Buscar y almacenar el AnimationClip a modificar
+        foreach (AnimationClip clip in overrideController.animationClips)
+        {
+            if (clip.name == nombreAnimacionSiguiente)
+            {
+                clipToModify = clip;
+                break;
+            }
+        }
+
         IniciarSecuencia();
     }
 
@@ -41,7 +59,10 @@ public class CambiarAnimacion : MonoBehaviour
         // Esperar la duración del bucle
         yield return new WaitForSeconds(duracionBucle);
 
-        // Detener el bucle de la animación configurando el tiempo de loop a cero
-        animator.SetFloat("Loop", 0f);
+        // Desactivar el loop del AnimationClip modificando su wrapMode
+        if (clipToModify != null)
+        {
+            clipToModify.wrapMode = WrapMode.Once; // Desactivar el loop
+        }
     }
 }
