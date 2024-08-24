@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
-  velocidadDesaparicion: 8
+  velocidadDesaparicion: 4
   sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   volumenSonido: 1
 --- !u!212 &22239792
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
-  velocidadDesaparicion: 8
+  velocidadDesaparicion: 4
   sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   volumenSonido: 1
 --- !u!212 &551360210
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
-  velocidadDesaparicion: 8
+  velocidadDesaparicion: 4
   sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   volumenSonido: 1
 --- !u!212 &663214257
@@ -1565,7 +1565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
-  velocidadDesaparicion: 8
+  velocidadDesaparicion: 4
   sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   volumenSonido: 1
 --- !u!212 &1549624801
