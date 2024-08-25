@@ -158,6 +158,7 @@ MonoBehaviour:
   nombreAnimacionInicial: ROMBO2 QUIETO
   nombreAnimacionSiguiente: ROMBO2 PELEA MORTAL
   tiempoEspera: 0.8
+  duracionBucle: 1
 --- !u!212 &245344780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -770,6 +771,7 @@ MonoBehaviour:
   nombreAnimacionInicial: ROMBO4 QUIETO
   nombreAnimacionSiguiente: ROMBO4 PELEA MORTAL
   tiempoEspera: 0.8
+  duracionBucle: 1
 --- !u!212 &509971663
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -893,6 +895,7 @@ MonoBehaviour:
   nombreAnimacionInicial: ROMBO1 QUIETO
   nombreAnimacionSiguiente: ROMBO1 PELEA MORTAL
   tiempoEspera: 0.8
+  duracionBucle: 5
 --- !u!212 &761149574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1355,6 +1358,7 @@ MonoBehaviour:
   nombreAnimacionInicial: ROMBO3 QUIETO
   nombreAnimacionSiguiente: ROMBO3 PELEA MORTAL
   tiempoEspera: 0.8
+  duracionBucle: 1
 --- !u!212 &1547056367
 SpriteRenderer:
   m_ObjectHideFlags: 0
