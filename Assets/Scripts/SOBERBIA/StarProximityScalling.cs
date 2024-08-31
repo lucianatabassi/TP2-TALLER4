@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;  // Añade esta línea para utilizar IEnumerator y corrutinas
+using System.Collections;
 
 public class StarProximityScaling : MonoBehaviour
 {
@@ -7,8 +7,12 @@ public class StarProximityScaling : MonoBehaviour
     public Transform estrella; // Asigna el transform de la estrella en el inspector
     public float scaleIncrement = 0.5f; // Cantidad por la cual la estrella aumentará su escala
     public float scaleDuration = 1f; // Duración en segundos para completar el incremento de escala
+    public float resetDelay = 10f; // Tiempo en segundos antes de reiniciar la estrella
+    public float resetDuration = 2f; // Duración en segundos para volver a la posición y tamaño inicial
     public AudioClip sonidoInteraccion; // AudioClip para el sonido de interacción
 
+    private Vector3 initialScale; // Escala inicial de la estrella
+    private Vector3 initialPosition; // Posición inicial de la estrella
     private bool[] hasTriggered; // Para asegurarse de que cada rombo solo active la escala una vez
     private AudioSource audioSource; // AudioSource para reproducir sonidos
 
@@ -22,6 +26,13 @@ public class StarProximityScaling : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Guarda la escala y posición inicial de la estrella
+        if (estrella != null)
+        {
+            initialScale = estrella.localScale;
+            initialPosition = estrella.position;
         }
     }
 
@@ -51,6 +62,9 @@ public class StarProximityScaling : MonoBehaviour
 
                 // Marca este rombo como activado
                 hasTriggered[index] = true;
+
+                // Iniciar la corutina para reiniciar la estrella después de un retraso
+                StartCoroutine(ReiniciarEstrella());
             }
         }
     }
@@ -58,14 +72,13 @@ public class StarProximityScaling : MonoBehaviour
     // Corrutina para incrementar la escala de la estrella gradualmente
     IEnumerator IncrementarEscalaGradualmente()
     {
-        Vector3 initialScale = estrella.localScale;
         Vector3 targetScale = initialScale + new Vector3(scaleIncrement, scaleIncrement, 0);
-
+        Vector3 scaleStart = estrella.localScale;
         float elapsedTime = 0f;
 
         while (elapsedTime < scaleDuration)
         {
-            estrella.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / scaleDuration);
+            estrella.localScale = Vector3.Lerp(scaleStart, targetScale, elapsedTime / scaleDuration);
             elapsedTime += Time.deltaTime;
             yield return null; // Espera hasta el siguiente frame
         }
@@ -74,13 +87,48 @@ public class StarProximityScaling : MonoBehaviour
         estrella.localScale = targetScale;
     }
 
-    // Método para reiniciar las interacciones
-    public void ResetInteractions()
+    // Corrutina para reiniciar la estrella y las animaciones
+    IEnumerator ReiniciarEstrella()
     {
+        yield return new WaitForSeconds(resetDelay); // Espera el retraso antes de reiniciar
+
+        if (estrella == null) yield break;
+
+        Vector3 scaleStart = estrella.localScale;
+        Vector3 targetScale = initialScale;
+        Vector3 positionStart = estrella.position;
+        Vector3 targetPosition = initialPosition;
+
+        float elapsedTime = 0f;
+
+        // Mueve la estrella y cambia su escala gradualmente
+        while (elapsedTime < resetDuration)
+        {
+            estrella.position = Vector3.Lerp(positionStart, targetPosition, elapsedTime / resetDuration);
+            estrella.localScale = Vector3.Lerp(scaleStart, targetScale, elapsedTime / resetDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Espera hasta el siguiente frame
+        }
+
+        // Asegura que la estrella esté exactamente en la posición y escala iniciales
+        estrella.position = targetPosition;
+        estrella.localScale = targetScale;
+
         // Reiniciar el estado de los rombos
+        for (int i = 0; i < romboAnimators.Length; i++)
+        {
+            Animator romboAnimator = romboAnimators[i];
+            if (romboAnimator != null)
+            {
+                // Vuelve al estado inicial del rombo
+                romboAnimator.SetTrigger("Reiniciar"); // Asegúrate de que "Reiniciar" es el trigger para volver al estado inicial
+            }
+        }
+
+        // Reinicia las interacciones para permitir nuevas activaciones
         for (int i = 0; i < hasTriggered.Length; i++)
         {
-            hasTriggered[i] = false; // Permitir que los rombos vuelvan a activar la escala
+            hasTriggered[i] = false;
         }
     }
 }

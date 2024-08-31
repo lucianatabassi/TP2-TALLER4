@@ -10,20 +10,28 @@ public class RombosDefos : MonoBehaviour
     public float factorEscalado = 2f;  // Factor de escala para ajustar la forma del rombo
     public AudioClip sonidoInteraccion;  // Sonido a reproducir cuando se produce la interacción
     public float volumen = 0.5f;  // Volumen del sonido (0.0f a 1.0f)
-    private AudioSource audioSource;  // Componente de AudioSource
+    public float tiempoEsperaReinicio = 3f; // Tiempo de espera después de la interacción antes de reiniciar
+    public float duracionTransicion = 2f; // Duración en segundos para la transición gradual
 
+    private AudioSource audioSource;  // Componente de AudioSource
     private bool sonidoReproducido = false;  // Para evitar reproducir el sonido varias veces
+    private Vector3 escalaOriginal; // Para guardar la escala original del rombo
+    private bool enTransicion = false;  // Indica si el rombo está en transición
+    private bool haInteractuado = false; // Indica si ha habido interacción
 
     void Start()
     {
-        // Inicializa el componente AudioSource
+        // Inicializa el componente AudioSource y guarda las propiedades originales
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = sonidoInteraccion;
         audioSource.volume = volumen;  // Ajusta el volumen
+        escalaOriginal = transform.localScale;  // Guarda la escala original
     }
 
     void Update()
     {
+        if (estrella == null || enTransicion) return;
+
         // Calcula la distancia entre el rombo y la estrella
         float distancia = Vector3.Distance(transform.position, estrella.transform.position);
 
@@ -38,6 +46,12 @@ public class RombosDefos : MonoBehaviour
         {
             audioSource.Play();
             sonidoReproducido = true;  // Evita que el sonido se reproduzca varias veces
+
+            if (!haInteractuado)
+            {
+                haInteractuado = true;
+                StartCoroutine(ReiniciarDespuesDeInteraccion());
+            }
         }
 
         // Restablece la posibilidad de reproducir el sonido si la distancia aumenta nuevamente
@@ -45,5 +59,34 @@ public class RombosDefos : MonoBehaviour
         {
             sonidoReproducido = false;
         }
+    }
+
+    IEnumerator ReiniciarDespuesDeInteraccion()
+    {
+        // Espera el tiempo especificado antes de iniciar el retorno gradual
+        yield return new WaitForSeconds(tiempoEsperaReinicio);
+
+        // Inicia la transición de escala gradual
+        StartCoroutine(RetornarGradualmente());
+    }
+
+    IEnumerator RetornarGradualmente()
+    {
+        enTransicion = true;
+        Vector3 escalaActual = transform.localScale;
+        float tiempoTranscurrido = 0f;
+
+        while (tiempoTranscurrido < duracionTransicion)
+        {
+            // Interpolación lineal para cambiar la escala del rombo gradualmente a su escala original
+            transform.localScale = Vector3.Lerp(escalaActual, escalaOriginal, tiempoTranscurrido / duracionTransicion);
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null;
+        }
+
+        // Asegurarse de que el rombo llegue exactamente a la escala original
+        transform.localScale = escalaOriginal;
+        enTransicion = false;
+        haInteractuado = false; // Reinicia la variable para futuras interacciones
     }
 }

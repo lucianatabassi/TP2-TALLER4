@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RomboController : MonoBehaviour
@@ -10,12 +11,16 @@ public class RomboController : MonoBehaviour
     public float moveSpeed = 5.0f; // Velocidad a la que el rombo se mueve (puedes ajustar esta velocidad)
     public AudioClip sonidoInteraccion; // AudioClip para el sonido de interacción
     public float intervaloSonido = 2.0f; // Intervalo de tiempo para repetir el sonido
+    public float tiempoEsperaReinicio = 10.0f; // Tiempo de espera antes de reiniciar
 
     private Transform estrellaTransform; // Referencia al transform de la estrella
     private Vector3 originalPosition; // Posición original del rombo
     private Vector3 targetPosition; // Posición objetivo a la que se moverá el rombo
     private AudioSource audioSource; // Referencia al AudioSource
     private float tiempoUltimoSonido = 0f; // Tiempo en el que se reprodujo el sonido por última vez
+    private bool haInteractuado = false; // Bandera para controlar la interacción
+    private Vector3 posicionInicialEstrella; // Posición inicial de la estrella
+    private float duracionTransicionEstrella = 2f; // Duración de la transición de la estrella
 
     private void Start()
     {
@@ -24,6 +29,7 @@ public class RomboController : MonoBehaviour
         if (estrella != null)
         {
             estrellaTransform = estrella.transform;
+            posicionInicialEstrella = estrellaTransform.position; // Guardar la posición inicial de la estrella
         }
 
         // Guarda la posición original del rombo
@@ -63,6 +69,12 @@ public class RomboController : MonoBehaviour
                 // Calcula la dirección y establece la posición objetivo
                 Vector3 direction = (transform.position - estrellaTransform.position).normalized;
                 targetPosition = originalPosition + direction * moveDistance;
+
+                if (!haInteractuado)
+                {
+                    haInteractuado = true;
+                    StartCoroutine(ReiniciarDespuesDeInteraccion());
+                }
             }
             else
             {
@@ -80,4 +92,46 @@ public class RomboController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
+
+    IEnumerator ReiniciarDespuesDeInteraccion()
+    {
+        // Espera el tiempo especificado antes de iniciar el retorno de la estrella
+        yield return new WaitForSeconds(tiempoEsperaReinicio);
+
+        // Retornar la estrella a su posición inicial gradualmente
+        yield return StartCoroutine(RetornarEstrellaGradualmente());
+
+        // Reinicia el estado del rombo
+        Reiniciar();
+    }
+
+    IEnumerator RetornarEstrellaGradualmente()
+    {
+        Vector3 posicionActual = estrellaTransform.position;
+        float tiempoTranscurrido = 0f;
+
+        while (tiempoTranscurrido < duracionTransicionEstrella)
+        {
+            estrellaTransform.position = Vector3.Lerp(posicionActual, posicionInicialEstrella, tiempoTranscurrido / duracionTransicionEstrella);
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null;
+        }
+
+        // Asegura que la estrella vuelva exactamente a su posición inicial
+        estrellaTransform.position = posicionInicialEstrella;
+    }
+
+    private void Reiniciar()
+    {
+        haInteractuado = false; // Reinicia la bandera de interacción
+        targetPosition = originalPosition; // Restablece la posición objetivo
+        transform.position = originalPosition; // Restablece la posición del rombo
+
+        // Reinicia la animación al estado Idle
+        if (animator != null)
+        {
+            animator.Play(idleAnimationName);
+        }
+    }
 }
+

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ProteccionRombos : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class ProteccionRombos : MonoBehaviour
             {
                 ReproducirSonido(); // Reproduce el sonido si no se ha reproducido aún
                 sonidoReproducido = true; // Marca que el sonido ha sido reproducido
+                StartCoroutine(MoverEstrellaAtras()); // Inicia la coroutine para mover la estrella
             }
         }
         else
@@ -65,14 +67,29 @@ public class ProteccionRombos : MonoBehaviour
         }
     }
 
-    // Método para reiniciar el estado del script y la posición de la estrella
-    public void Reiniciar()
+    // Coroutine para mover la estrella de vuelta a su posición inicial gradualmente
+    IEnumerator MoverEstrellaAtras()
     {
-        if (estrella != null)
+        yield return new WaitForSeconds(10f); // Espera 10 segundos
+
+        if (estrella == null) yield break;
+
+        Vector3 posicionActual = estrella.transform.position;
+        float tiempoTranscurrido = 0f;
+        float duracionMovimiento = 2f; // Duración del movimiento gradual
+
+        while (tiempoTranscurrido < duracionMovimiento)
         {
-            estrella.transform.position = posicionInicialEstrella;
+            tiempoTranscurrido += Time.deltaTime;
+            float t = tiempoTranscurrido / duracionMovimiento;
+            estrella.transform.position = Vector3.Lerp(posicionActual, posicionInicialEstrella, t);
+            yield return null;
         }
 
+        // Asegúrate de que la estrella esté exactamente en la posición inicial
+        estrella.transform.position = posicionInicialEstrella;
+
+        // Reinicia la animación de los rombos al estado idle después de mover la estrella
         foreach (RomboConfig rombo in rombos)
         {
             rombo.animator.Play(rombo.animacionIdle);

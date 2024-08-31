@@ -6,63 +6,114 @@ public class CambiarAnimacion : MonoBehaviour
     public Animator animator;
     public string nombreAnimacionInicial = "Idle";
     public string nombreAnimacionSiguiente = "Deformacion";
-    public float tiempoEspera = 3f; // Tiempo en segundos antes de cambiar la animación
-    public float duracionBucle = 1f; // Duración en segundos que la animación estará en bucle
+    public float tiempoEspera = 3f;
+    public float duracionBucle = 1f;
+    public float tiempoDeEspera = 10f;
 
-    private AnimatorOverrideController overrideController;
-    private AnimationClip clipToModify;
+    public Transform estrella; // Campo público para asignar la estrella en el inspector
+    private Vector3 posicionInicial;
+
+    public GameObject rombo1;
+    public GameObject rombo2;
+    public GameObject rombo3;
+    public GameObject rombo4;
 
     void Start()
     {
-        animator = GetComponent<Animator>();
-
-        // Crear un AnimatorOverrideController basado en el controlador de animación original
-        overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animator.runtimeAnimatorController = overrideController;
-
-        // Buscar y almacenar el AnimationClip a modificar
-        foreach (AnimationClip clip in overrideController.animationClips)
+        if (estrella == null)
         {
-            if (clip.name == nombreAnimacionSiguiente)
-            {
-                clipToModify = clip;
-                break;
-            }
+            Debug.LogError("La estrella no está asignada en el inspector.");
+            return;
         }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("El Animator no está asignado en el GameObject.");
+            return;
+        }
+
+        posicionInicial = estrella.position; // Captura la posición inicial de la estrella
 
         IniciarSecuencia();
     }
 
     public void IniciarSecuencia()
     {
-        // Iniciar con la animación inicial
         animator.Play(nombreAnimacionInicial);
-
-        // Iniciar la corutina para cambiar a la siguiente animación después de cierto tiempo
         StartCoroutine(CambiarAnimacionDespuesDeTiempo());
     }
 
     public void ReiniciarSecuencia()
     {
-        StopAllCoroutines();  // Detener cualquier corutina anterior
-        IniciarSecuencia();   // Reiniciar la secuencia
+        StopAllCoroutines();
+        IniciarSecuencia();
     }
 
     IEnumerator CambiarAnimacionDespuesDeTiempo()
     {
-        // Esperar cierto tiempo antes de cambiar la animación
         yield return new WaitForSeconds(tiempoEspera);
-
-        // Cambiar a la siguiente animación (que está en loop por defecto)
         animator.Play(nombreAnimacionSiguiente, -1, 0);
-
-        // Esperar la duración del bucle
         yield return new WaitForSeconds(duracionBucle);
 
-        // Desactivar el loop del AnimationClip modificando su wrapMode
-        if (clipToModify != null)
+        yield return new WaitForSeconds(tiempoDeEspera);
+        StartCoroutine(VolverAlaPosicionInicial());
+    }
+
+    IEnumerator VolverAlaPosicionInicial()
+    {
+        if (estrella == null)
         {
-            clipToModify.wrapMode = WrapMode.Once; // Desactivar el loop
+            Debug.LogError("La estrella no está asignada.");
+            yield break;
+        }
+
+        Debug.Log("Iniciando retorno a la posición inicial...");
+        float tiempo = 0f;
+        Vector3 posicionActual = estrella.position;
+
+        // Cambia el valor de tiempoDeEspera para ajustar la velocidad del retorno
+        float velocidadDeRetorno = 1f; // Ajusta este valor para hacer el retorno más rápido
+
+        while (tiempo < 1f)
+        {
+            tiempo += Time.deltaTime * velocidadDeRetorno; // Multiplicador para acelerar el retorno
+            estrella.position = Vector3.Lerp(posicionActual, posicionInicial, tiempo);
+            Debug.Log($"Posición actual: {estrella.position}");
+            yield return null;
+        }
+
+        estrella.position = posicionInicial;
+        Debug.Log("Posición inicial alcanzada.");
+
+        ReiniciarSecuencia();
+
+        // Reiniciar los rombos al estado de pelea
+        ReiniciarRombo(rombo1);
+        ReiniciarRombo(rombo2);
+        ReiniciarRombo(rombo3);
+        ReiniciarRombo(rombo4);
+    }
+
+    private void ReiniciarRombo(GameObject rombo)
+    {
+        if (rombo == null)
+        {
+            Debug.LogWarning("Rombo no asignado.");
+            return;
+        }
+
+        Animator romboAnimator = rombo.GetComponent<Animator>();
+        if (romboAnimator != null)
+        {
+            // Reiniciar al estado de animación "pelea"
+            romboAnimator.Play("Pelea"); // Asegúrate de que "Pelea" sea el nombre exacto de la animación de pelea
+            romboAnimator.SetBool("IsFighting", true); // Activa el estado de pelea
+            romboAnimator.SetBool("IsCalm", false); // Desactiva el estado tranquilo
+        }
+        else
+        {
+            Debug.LogWarning("Animator no encontrado en el rombo.");
         }
     }
 }

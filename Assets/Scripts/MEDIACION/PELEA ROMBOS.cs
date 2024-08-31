@@ -78,6 +78,12 @@ public class PELEAROMBOS : MonoBehaviour
 
     private void ReiniciarRombo(GameObject rombo)
     {
+        if (rombo == null)
+        {
+            Debug.LogWarning("Rombo no asignado.");
+            return;
+        }
+
         Animator animator = rombo.GetComponent<Animator>();
         if (animator != null)
         {
@@ -85,6 +91,10 @@ public class PELEAROMBOS : MonoBehaviour
             animator.Play("Pelea"); // Asegúrate de que "Pelea" sea el nombre exacto de la animación de pelea
             animator.SetBool("IsFighting", true); // Activa el estado de pelea
             animator.SetBool("IsCalm", false); // Desactiva el estado tranquilo
+        }
+        else
+        {
+            Debug.LogWarning("Animator no encontrado en el rombo.");
         }
     }
 }

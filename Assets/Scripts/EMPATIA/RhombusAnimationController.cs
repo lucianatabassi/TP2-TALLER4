@@ -13,8 +13,6 @@ public class RhombusAnimationController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
-        // Agrega o encuentra el componente AudioSource
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -22,15 +20,14 @@ public class RhombusAnimationController : MonoBehaviour
         }
 
         // Inicia la animación Idle si es necesario
-        // animator.Play("Idle");
-        Invoke("StartDeformAnimation", 2f); // Ajusta el tiempo según sea necesario
+        Invoke("StartDeformAnimation", 2f);
     }
 
     void StartDeformAnimation()
     {
         if (!hasTransformed)
         {
-            animator.Play(deformarStateName); // Usa el nombre del estado específico
+            animator.Play(deformarStateName);
         }
     }
 
@@ -43,7 +40,6 @@ public class RhombusAnimationController : MonoBehaviour
             hasTransformed = true;
             ActivateTransformTrigger();
 
-            // Reproducir sonido de interacción
             if (sonidoInteraccion != null)
             {
                 audioSource.PlayOneShot(sonidoInteraccion);
@@ -53,17 +49,16 @@ public class RhombusAnimationController : MonoBehaviour
 
     void ActivateTransformTrigger()
     {
-        animator.SetTrigger(TransformTrigger); // Usa el nombre del trigger específico
+        animator.SetTrigger(TransformTrigger);
     }
 
-    // Método para reiniciar el estado del script
-    public void ResetAnimation()
+    public void ReiniciarEstado()
     {
         // Reiniciar el estado de la animación
         animator.ResetTrigger(TransformTrigger);
-        animator.Play("Idle");  // Vuelve a la animación "Idle"
-        hasTransformed = false; // Restablecer el estado de transformación
-        CancelInvoke();  // Cancelar cualquier invocación pendiente
-        Invoke("StartDeformAnimation", 2f); // Reiniciar la animación "Deformar" después de un tiempo
+        animator.Play("Idle");
+        hasTransformed = false;
+        CancelInvoke();
+        Invoke("StartDeformAnimation", 2f);
     }
 }
