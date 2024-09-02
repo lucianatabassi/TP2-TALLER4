@@ -745,6 +745,7 @@ MonoBehaviour:
   distanciaActivacion: 2
   audioSource: {fileID: 962022307}
   sonidoInteraccion: {fileID: 8300000, guid: 277e66df13df44940843dfe68f279119, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
 --- !u!114 &962022306
 MonoBehaviour:
   m_ObjectHideFlags: 0

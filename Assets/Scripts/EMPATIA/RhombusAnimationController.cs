@@ -44,6 +44,9 @@ public class RhombusAnimationController : MonoBehaviour
             {
                 audioSource.PlayOneShot(sonidoInteraccion);
             }
+
+            // Llama a ReiniciarEstado después de 10 segundos
+            Invoke("ReiniciarEstado", 10f);
         }
     }
 

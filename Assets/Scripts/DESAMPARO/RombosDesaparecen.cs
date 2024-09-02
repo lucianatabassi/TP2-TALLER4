@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RombosDesaparecen : MonoBehaviour
@@ -7,8 +6,10 @@ public class RombosDesaparecen : MonoBehaviour
     public GameObject estrella;  // Referencia al objeto estrella
     public float distanciaDesaparicion = 1f;  // Distancia para que comience la desaparición
     public float velocidadDesaparicion = 2f;  // Velocidad de desaparición
-    public AudioClip sonidoInteraccion;  // Clip de sonido a reproducir
-    public float volumenSonido = 1f;  // Volumen del sonido
+    public AudioClip sonidoInteraccion;  // Clip de sonido a reproducir al desaparecer
+    public AudioClip sonidoReinicio;  // Clip de sonido para el reinicio
+    public float volumenSonido = 1f;  // Volumen del sonido de interacción
+    public float volumenReinicio = 1f;  // Volumen del sonido de reinicio
     public float tiempoEsperaReinicio = 3f;  // Tiempo de espera antes de reiniciar
     public float duracionTransicion = 2f;  // Duración en segundos para que la estrella vuelva a su posición inicial
     public float velocidadReaparicion = 2f;  // Velocidad de reaparición de los rombos
@@ -16,7 +17,8 @@ public class RombosDesaparecen : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool debeDesaparecer = false;  // Bandera para activar la desaparición
     private Color colorInicial;
-    private AudioSource audioSource;  // Fuente de audio para reproducir el sonido
+    private AudioSource audioSourceInteraccion;  // Fuente de audio para el sonido de interacción
+    private AudioSource audioSourceReinicio;  // Fuente de audio para el sonido de reinicio
     private Vector3 posicionInicialEstrella;  // Posición inicial de la estrella
     private bool haInteractuado = false;  // Para controlar la interacción
 
@@ -24,13 +26,16 @@ public class RombosDesaparecen : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();  // Obtiene el SpriteRenderer del rombo
         colorInicial = spriteRenderer.color;  // Guarda el color inicial del rombo
-        audioSource = GetComponent<AudioSource>();  // Obtiene el AudioSource del rombo
 
-        if (audioSource != null && sonidoInteraccion != null)
-        {
-            audioSource.clip = sonidoInteraccion;
-            audioSource.volume = volumenSonido;
-        }
+        // Configurar AudioSource para el sonido de interacción
+        audioSourceInteraccion = gameObject.AddComponent<AudioSource>();
+        audioSourceInteraccion.clip = sonidoInteraccion;
+        audioSourceInteraccion.volume = volumenSonido;
+
+        // Configurar AudioSource para el sonido de reinicio
+        audioSourceReinicio = gameObject.AddComponent<AudioSource>();
+        audioSourceReinicio.clip = sonidoReinicio;
+        audioSourceReinicio.volume = volumenReinicio;
 
         // Guardar la posición inicial de la estrella
         if (estrella != null)
@@ -70,9 +75,9 @@ public class RombosDesaparecen : MonoBehaviour
                 debeDesaparecer = true;
 
                 // Reproducir el sonido de interacción
-                if (audioSource != null && !audioSource.isPlaying)
+                if (audioSourceInteraccion != null && !audioSourceInteraccion.isPlaying)
                 {
-                    audioSource.Play();
+                    audioSourceInteraccion.Play();
                 }
             }
         }
@@ -82,6 +87,12 @@ public class RombosDesaparecen : MonoBehaviour
     {
         // Esperar el tiempo especificado antes de iniciar el retorno de la estrella y el reinicio
         yield return new WaitForSeconds(tiempoEsperaReinicio);
+
+        // Reproducir el sonido de reinicio
+        if (audioSourceReinicio != null)
+        {
+            audioSourceReinicio.Play();
+        }
 
         // Iniciar el retorno de la estrella a su posición inicial
         yield return StartCoroutine(RetornarEstrellaGradualmente());
@@ -139,10 +150,10 @@ public class RombosDesaparecen : MonoBehaviour
         Color colorRestaurado = new Color(colorInicial.r, colorInicial.g, colorInicial.b, 1f);
         spriteRenderer.color = colorRestaurado;
 
-        // Detener el sonido si está reproduciéndose
-        if (audioSource != null && audioSource.isPlaying)
+        // Detener el sonido de interacción si está reproduciéndose
+        if (audioSourceInteraccion != null && audioSourceInteraccion.isPlaying)
         {
-            audioSource.Stop();
+            audioSourceInteraccion.Stop();
         }
     }
 }

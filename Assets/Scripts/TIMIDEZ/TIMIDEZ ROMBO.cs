@@ -9,15 +9,16 @@ public class TIMIDEZROMBO : MonoBehaviour
     public Vector3 escalaAchicada = new Vector3(0.5f, 0.5f, 0.5f);  // Tamaño achicado de la estrella
     public float velocidadAchicamiento = 2f;  // Velocidad de achicamiento
     public AudioClip sonidoInteraccion;  // Clip de audio para la interacción
+    public AudioClip sonidoReinicio;  // Clip de audio para el reinicio
     public float volumenSonido = 1f;  // Volumen del sonido
-    public float tiempoDeEspera = 10f;  // Tiempo en segundos para esperar antes de restaurar la posición
+    public float tiempoDeEspera = 15f;  // Tiempo en segundos para esperar antes de restaurar la posición
 
     private Vector3 posicionOriginal;  // Posición original de la estrella
     private Vector3 escalaOriginal;     // Escala original de la estrella
     private bool enProximidad = false;
     private bool sonidoReproducido = false;  // Controla si el sonido ya se ha reproducido
     private AudioSource audioSource;  // Componente AudioSource
-    private bool corutinaEnEspera = false;  // Para evitar iniciar la corutina múltiples veces
+    private Coroutine corutinaReset;  // Referencia a la corutina para reiniciar la posición
 
     void Start()
     {
@@ -33,7 +34,6 @@ public class TIMIDEZROMBO : MonoBehaviour
         }
 
         // Asignamos el clip de audio al AudioSource
-        audioSource.clip = sonidoInteraccion;
         audioSource.volume = volumenSonido;
     }
 
@@ -55,13 +55,16 @@ public class TIMIDEZROMBO : MonoBehaviour
                 // Reproduce el sonido si está en proximidad y no ha sonado antes
                 if (!sonidoReproducido)
                 {
+                    audioSource.clip = sonidoInteraccion;
                     audioSource.Play();
                     sonidoReproducido = true;  // Marca que el sonido ha sido reproducido
-                    // Inicia la corutina para reiniciar la posición después de un retraso
-                    if (!corutinaEnEspera)
+
+                    // Inicia o reinicia la corutina para reiniciar la posición después del tiempo de espera
+                    if (corutinaReset != null)
                     {
-                        StartCoroutine(ResetearPosicionConRetraso(tiempoDeEspera));
+                        StopCoroutine(corutinaReset);
                     }
+                    corutinaReset = StartCoroutine(ResetearPosicionConRetraso(tiempoDeEspera));
                 }
                 break;  // Si un rombo está lo suficientemente cerca, no necesitamos seguir buscando
             }
@@ -83,24 +86,37 @@ public class TIMIDEZROMBO : MonoBehaviour
     // Corutina para reiniciar la posición de la estrella después de un retraso
     private IEnumerator ResetearPosicionConRetraso(float delay)
     {
-        corutinaEnEspera = true;  // Marcamos que la corutina está en espera
-        Vector3 posicionInicial = transform.position;
+        yield return new WaitForSeconds(delay);  // Espera el tiempo especificado antes de empezar a mover
+
+        Vector3 posicionActual = transform.position;  // Tomamos la posición actual
+
         float tiempoTranscurrido = 0f;
+        float duracionMovimiento = 1f;  // Duración del movimiento (1 segundo)
 
-        // Espera el tiempo especificado antes de empezar a mover
-        yield return new WaitForSeconds(delay);
-
-        // Mueve gradualmente la estrella a la posición original
-        while (tiempoTranscurrido < 1f)  // Duración del movimiento (1 segundo)
+        // Mueve gradualmente la estrella a la posición original desde la posición actual
+        while (tiempoTranscurrido < duracionMovimiento)
         {
             tiempoTranscurrido += Time.deltaTime;
-            float porcentaje = tiempoTranscurrido / 1f;
-            transform.position = Vector3.Lerp(posicionInicial, posicionOriginal, porcentaje);
+            float porcentaje = tiempoTranscurrido / duracionMovimiento;
+            transform.position = Vector3.Lerp(posicionActual, posicionOriginal, porcentaje);
             yield return null;  // Espera hasta el siguiente frame
         }
 
         // Asegúrate de que la posición final sea la original
         transform.position = posicionOriginal;
-        corutinaEnEspera = false;  // Permitimos que la corutina se inicie nuevamente
+
+        // Reproduce el sonido de reinicio después de que la estrella haya vuelto a la posición inicial
+        if (sonidoReinicio != null)
+        {
+            Debug.Log("Reproduciendo sonido de reinicio");
+            audioSource.clip = sonidoReinicio;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("El sonido de reinicio no está asignado.");
+        }
+
+        corutinaReset = null;  // Permitimos que la corutina se inicie nuevamente
     }
 }

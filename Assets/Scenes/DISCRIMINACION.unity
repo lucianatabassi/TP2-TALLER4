@@ -162,8 +162,13 @@ MonoBehaviour:
   moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
+  starReturnDelay: 10
+  starReturnSpeed: 2
   audioSource: {fileID: 75017296}
-  sonidoInteraccion: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
+  volumenSonidoReinicio: 0
+  estrellaTransform: {fileID: 813738642}
 --- !u!212 &75017293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -262,7 +267,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -387,8 +392,13 @@ MonoBehaviour:
   moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
+  starReturnDelay: 10
+  starReturnSpeed: 2
   audioSource: {fileID: 75017296}
-  sonidoInteraccion: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
+  volumenSonidoReinicio: 1
+  estrellaTransform: {fileID: 813738642}
 --- !u!212 &378649983
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -487,7 +497,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -612,8 +622,13 @@ MonoBehaviour:
   moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
+  starReturnDelay: 10
+  starReturnSpeed: 2
   audioSource: {fileID: 75017296}
-  sonidoInteraccion: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
+  volumenSonidoReinicio: 0
+  estrellaTransform: {fileID: 813738642}
 --- !u!212 &463974930
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -712,7 +727,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -837,8 +852,13 @@ MonoBehaviour:
   moveDistance: 1
   moveSpeed: 5
   delayBeforeReturning: 0.1
+  starReturnDelay: 10
+  starReturnSpeed: 2
   audioSource: {fileID: 75017296}
-  sonidoInteraccion: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
+  volumenSonidoReinicio: 0
+  estrellaTransform: {fileID: 813738642}
 --- !u!212 &496529918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -937,7 +957,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a7d5b6d91153da04d87f39bcec0301c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f66c4f7ff359c89409ab255f5ebb15cf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1

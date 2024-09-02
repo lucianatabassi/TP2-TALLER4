@@ -569,9 +569,12 @@ MonoBehaviour:
   proximityThreshold: 1.8
   moveDistance: 0.5
   moveSpeed: 5
-  sonidoInteraccion: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   intervaloSonido: 2
   tiempoEsperaReinicio: 10
+  duracionTransicionEstrella: 2
+  volumenSonidoReinicio: 1
 --- !u!82 &1057184263
 AudioSource:
   m_ObjectHideFlags: 0
@@ -582,9 +585,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.78
+  m_Volume: 0.41
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -860,9 +863,12 @@ MonoBehaviour:
   proximityThreshold: 1.8
   moveDistance: 0.5
   moveSpeed: 5
-  sonidoInteraccion: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   intervaloSonido: 2
   tiempoEsperaReinicio: 10
+  duracionTransicionEstrella: 2
+  volumenSonidoReinicio: 0
 --- !u!82 &1225846999
 AudioSource:
   m_ObjectHideFlags: 0
@@ -873,9 +879,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.78
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1472,9 +1478,12 @@ MonoBehaviour:
   proximityThreshold: 1.8
   moveDistance: 0.5
   moveSpeed: 5
-  sonidoInteraccion: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   intervaloSonido: 2
   tiempoEsperaReinicio: 10
+  duracionTransicionEstrella: 2
+  volumenSonidoReinicio: 0
 --- !u!82 &1753660007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1485,9 +1494,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.78
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1956,9 +1965,12 @@ MonoBehaviour:
   proximityThreshold: 1.8
   moveDistance: 0.5
   moveSpeed: 5
-  sonidoInteraccion: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   intervaloSonido: 2
   tiempoEsperaReinicio: 10
+  duracionTransicionEstrella: 2
+  volumenSonidoReinicio: 0
 --- !u!82 &2099177907
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1969,9 +1981,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a64943c9a34661240bb84d799de55337, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5305fdfb7c2f42345bbd8eca024791b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.78
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

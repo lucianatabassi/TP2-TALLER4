@@ -1,51 +1,57 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RombosDefos : MonoBehaviour
 {
-    public GameObject estrella;  // Referencia al objeto estrella
-    public float distanciaReferencia = 5f;  // Distancia en la que el rombo se ajusta para tocar la estrella
-    public Vector3 escalaBase = new Vector3(1f, 1f, 1f);  // Tamaño base del rombo
-    public float factorEscalado = 2f;  // Factor de escala para ajustar la forma del rombo
-    public AudioClip sonidoInteraccion;  // Sonido a reproducir cuando se produce la interacción
-    public float volumen = 0.5f;  // Volumen del sonido (0.0f a 1.0f)
-    public float tiempoEsperaReinicio = 3f; // Tiempo de espera después de la interacción antes de reiniciar
-    public float duracionTransicion = 2f; // Duración en segundos para la transición gradual
+    public GameObject estrella;
+    public float distanciaReferencia = 5f;
+    public Vector3 escalaBase = new Vector3(1f, 1f, 1f);
+    public float factorEscalado = 2f;
+    public AudioClip sonidoInteraccion;
+    public AudioClip sonidoReinicio;  // AudioClip para el sonido de reinicio
+    public float volumenInteraccion = 0.5f;
+    public float volumenReinicio = 0.5f;  // Volumen específico para el sonido de reinicio
+    public float tiempoEsperaReinicio = 3f;
+    public float duracionTransicion = 2f;
 
-    private AudioSource audioSource;  // Componente de AudioSource
-    private bool sonidoReproducido = false;  // Para evitar reproducir el sonido varias veces
-    private Vector3 escalaOriginal; // Para guardar la escala original del rombo
-    private bool enTransicion = false;  // Indica si el rombo está en transición
-    private bool haInteractuado = false; // Indica si ha habido interacción
+    private AudioSource audioSourceInteraccion;
+    private AudioSource audioSourceReinicio;
+    private bool sonidoReproducido = false;
+    private Vector3 escalaOriginal;
+    private Vector3 posicionOriginal;  // Variable para almacenar la posición original
+    private bool enTransicion = false;
+    private bool haInteractuado = false;
 
     void Start()
     {
-        // Inicializa el componente AudioSource y guarda las propiedades originales
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = sonidoInteraccion;
-        audioSource.volume = volumen;  // Ajusta el volumen
-        escalaOriginal = transform.localScale;  // Guarda la escala original
+        // Inicializa el AudioSource para la interacción
+        audioSourceInteraccion = gameObject.AddComponent<AudioSource>();
+        audioSourceInteraccion.clip = sonidoInteraccion;
+        audioSourceInteraccion.volume = volumenInteraccion;
+
+        // Inicializa el AudioSource para el sonido de reinicio
+        audioSourceReinicio = gameObject.AddComponent<AudioSource>();
+        audioSourceReinicio.clip = sonidoReinicio;
+        audioSourceReinicio.volume = volumenReinicio;
+
+        escalaOriginal = transform.localScale;
+        posicionOriginal = estrella.transform.position;  // Guardamos la posición original de la estrella
+
+        Debug.Log("Posición Original de la Estrella: " + posicionOriginal);
     }
 
     void Update()
     {
         if (estrella == null || enTransicion) return;
 
-        // Calcula la distancia entre el rombo y la estrella
         float distancia = Vector3.Distance(transform.position, estrella.transform.position);
-
-        // Calcula la escala en función de la distancia
         float escala = Mathf.Clamp(distancia / distanciaReferencia, 0f, factorEscalado);
-
-        // Ajusta la escala del rombo
         transform.localScale = escalaBase * escala;
 
-        // Reproduce el sonido cuando la distancia es menor que la distancia de referencia y el sonido no se ha reproducido
         if (distancia < distanciaReferencia && !sonidoReproducido)
         {
-            audioSource.Play();
-            sonidoReproducido = true;  // Evita que el sonido se reproduzca varias veces
+            audioSourceInteraccion.Play();
+            sonidoReproducido = true;
 
             if (!haInteractuado)
             {
@@ -54,7 +60,6 @@ public class RombosDefos : MonoBehaviour
             }
         }
 
-        // Restablece la posibilidad de reproducir el sonido si la distancia aumenta nuevamente
         if (distancia >= distanciaReferencia)
         {
             sonidoReproducido = false;
@@ -63,10 +68,7 @@ public class RombosDefos : MonoBehaviour
 
     IEnumerator ReiniciarDespuesDeInteraccion()
     {
-        // Espera el tiempo especificado antes de iniciar el retorno gradual
         yield return new WaitForSeconds(tiempoEsperaReinicio);
-
-        // Inicia la transición de escala gradual
         StartCoroutine(RetornarGradualmente());
     }
 
@@ -74,19 +76,37 @@ public class RombosDefos : MonoBehaviour
     {
         enTransicion = true;
         Vector3 escalaActual = transform.localScale;
+        Vector3 posicionActual = estrella.transform.position;  // Tomamos la posición actual de la estrella
         float tiempoTranscurrido = 0f;
 
+        // Reproduce el sonido de reinicio usando el AudioSource específico
+        if (audioSourceReinicio.clip != null)
+        {
+            audioSourceReinicio.Play();
+            Debug.Log("Sonido de reinicio reproducido.");
+        }
+        else
+        {
+            Debug.LogWarning("AudioClip de reinicio no está asignado.");
+        }
+
+        Debug.Log("Posición Actual de la Estrella al Iniciar Transición: " + posicionActual);
+
+        // Transición de escala y posición
         while (tiempoTranscurrido < duracionTransicion)
         {
-            // Interpolación lineal para cambiar la escala del rombo gradualmente a su escala original
             transform.localScale = Vector3.Lerp(escalaActual, escalaOriginal, tiempoTranscurrido / duracionTransicion);
+            estrella.transform.position = Vector3.Lerp(posicionActual, posicionOriginal, tiempoTranscurrido / duracionTransicion);  // Transición de posición
             tiempoTranscurrido += Time.deltaTime;
             yield return null;
         }
 
-        // Asegurarse de que el rombo llegue exactamente a la escala original
         transform.localScale = escalaOriginal;
+        estrella.transform.position = posicionOriginal;  // Asegura que la posición final de la estrella sea exacta
+
+        Debug.Log("Posición Final de la Estrella después de Transición: " + estrella.transform.position);
+
         enTransicion = false;
-        haInteractuado = false; // Reinicia la variable para futuras interacciones
+        haInteractuado = false;
     }
 }

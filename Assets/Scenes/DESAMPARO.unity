@@ -158,9 +158,11 @@ MonoBehaviour:
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
   velocidadDesaparicion: 4
-  sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: cd77182f910883a4297f0e87e76b3b69, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   volumenSonido: 1
-  tiempoEsperaReinicio: 10
+  volumenReinicio: 0
+  tiempoEsperaReinicio: 11
   duracionTransicion: 3
   velocidadReaparicion: 2
 --- !u!212 &22239792
@@ -263,7 +265,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -829,9 +831,11 @@ MonoBehaviour:
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
   velocidadDesaparicion: 4
-  sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: cd77182f910883a4297f0e87e76b3b69, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   volumenSonido: 1
-  tiempoEsperaReinicio: 10
+  volumenReinicio: 0
+  tiempoEsperaReinicio: 11
   duracionTransicion: 3
   velocidadReaparicion: 2
 --- !u!212 &551360210
@@ -934,7 +938,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1053,9 +1057,11 @@ MonoBehaviour:
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
   velocidadDesaparicion: 4
-  sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: cd77182f910883a4297f0e87e76b3b69, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   volumenSonido: 1
-  tiempoEsperaReinicio: 10
+  volumenReinicio: 0
+  tiempoEsperaReinicio: 11
   duracionTransicion: 3
   velocidadReaparicion: 2
 --- !u!212 &663214257
@@ -1158,7 +1164,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1422,9 +1428,11 @@ MonoBehaviour:
   estrella: {fileID: 133987866}
   distanciaDesaparicion: 2
   velocidadDesaparicion: 4
-  sonidoInteraccion: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
+  sonidoInteraccion: {fileID: 8300000, guid: cd77182f910883a4297f0e87e76b3b69, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   volumenSonido: 1
-  tiempoEsperaReinicio: 10
+  volumenReinicio: 1
+  tiempoEsperaReinicio: 11
   duracionTransicion: 3
   velocidadReaparicion: 2
 --- !u!212 &1549624801
@@ -1527,7 +1535,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d141659b80c71924386b1b9b8a68a2b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0

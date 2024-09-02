@@ -18,6 +18,10 @@ public class CambiarAnimacion : MonoBehaviour
     public GameObject rombo3;
     public GameObject rombo4;
 
+    public AudioSource audioSource; // Referencia al componente AudioSource
+    public AudioClip sonidoReinicio; // Referencia al AudioClip para el sonido de reinicio
+    public float volumenSonidoReinicio = 1.0f; // Volumen del sonido de reinicio
+
     void Start()
     {
         if (estrella == null)
@@ -86,6 +90,12 @@ public class CambiarAnimacion : MonoBehaviour
         estrella.position = posicionInicial;
         Debug.Log("Posición inicial alcanzada.");
 
+        // Reproduce el sonido de reinicio cuando la estrella regresa a la posición inicial
+        if (audioSource != null && sonidoReinicio != null)
+        {
+            audioSource.PlayOneShot(sonidoReinicio, volumenSonidoReinicio);
+        }
+
         ReiniciarSecuencia();
 
         // Reiniciar los rombos al estado de pelea
@@ -94,6 +104,7 @@ public class CambiarAnimacion : MonoBehaviour
         ReiniciarRombo(rombo3);
         ReiniciarRombo(rombo4);
     }
+
 
     private void ReiniciarRombo(GameObject rombo)
     {

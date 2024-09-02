@@ -439,8 +439,6 @@ MonoBehaviour:
   estrella: {fileID: 1976888457}
   velocidadRotacion: 4
   ajusteRotacionInicial: 270
-  tiempoEsperaReinicio: 3
-  duracionTransicion: 2
 --- !u!1 &1687060882
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,8 +706,6 @@ MonoBehaviour:
   estrella: {fileID: 1976888457}
   velocidadRotacion: 4
   ajusteRotacionInicial: 270
-  tiempoEsperaReinicio: 3
-  duracionTransicion: 2
 --- !u!1 &1859015861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,10 +1056,11 @@ MonoBehaviour:
   - {fileID: 2032444965}
   - {fileID: 2063347617}
   - {fileID: 1687937978}
-  distanciaCercana: 2
+  distanciaCercana: 1.6
   escalaAchicada: {x: 0.2, y: 0.2, z: 0.2}
   velocidadAchicamiento: 2
   sonidoInteraccion: {fileID: 8300000, guid: dfa1ae961f5cc5b4493cf9a30782151f, type: 3}
+  sonidoReinicio: {fileID: 8300000, guid: 72387130355ca144dbad7a174805efe9, type: 3}
   volumenSonido: 1
   tiempoDeEspera: 10
 --- !u!114 &1976888466
@@ -1382,8 +1379,6 @@ MonoBehaviour:
   estrella: {fileID: 1976888457}
   velocidadRotacion: 4
   ajusteRotacionInicial: 270
-  tiempoEsperaReinicio: 3
-  duracionTransicion: 2
 --- !u!1 &2063347617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,8 +1501,6 @@ MonoBehaviour:
   estrella: {fileID: 1976888457}
   velocidadRotacion: 4
   ajusteRotacionInicial: 270
-  tiempoEsperaReinicio: 3
-  duracionTransicion: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
